@@ -1,0 +1,241 @@
+@define-color wbColor rgba(37, 40, 64, 0.4);
+@define-color borderColor rgba(190, 189, 204, 0.14);
+@define-color bgColor rgba(22, 24, 31, 0.6);
+@define-color bgToolColor rgba(22, 24, 29, 0.9);
+@define-color bgColorHover rgba(40, 62, 85, 0.8);
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FreeSans, FontAwesome;
+    font-size: 13px;
+    color: #daf2ff;
+    transition: all .2s linear;
+    text-shadow: rgba(0,0,0,.5) 0 0 1px;
+}
+
+window#waybar {
+    background-color: @bgColor;
+    border: solid 2px;
+    border-radius: 5px;
+    border-color: @borderColor;
+}
+
+#pulseaudio {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 12px;
+    padding-right: 20px;
+}
+
+#pulseaudio:hover {
+    background-color: @bgColorHover;
+}
+
+
+#window {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+#taskbar{
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#taskbar button {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgba(60, 92, 126, 0.1);
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#taskbar button.active {
+    background-color: @bgColorHover;
+}
+
+#taskbar button:hover {
+    background-color: rgba(60, 92, 126, 0.8);
+}
+
+
+#clock {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    font-weight: 800;
+    font-family: FreeMono, FontAwesome;
+    font-size: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#time {
+    padding-top: 5px;
+}
+
+#time:hover {
+    background-color: @bgColorHover;
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#tray {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#idle_inhibitor:hover {
+    background-color: @bgColorHover;
+}
+
+#idle_inhibitor.activated {
+    background-color: rgba(49, 69, 85, 0.9);
+    color: #889eb1;
+}
+
+#custom-spotify {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#custom-spotify:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-notification {
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#custom-notification:hover {
+    background-color: @bgColorHover;
+}
+
+tooltip {
+    background-color: @bgToolColor;
+    border-radius: 4px;
+    border-width: 0px;
+}
+
+tooltip label{
+    font-size: 15px;
+    color: #daf2ff;
+    font-weight: 800;
+    font-family: FreeMono, FontAwesome;
+}
+
+#custom-separator {
+    font-weight: bold;
+    color: rgba(116, 141, 153, 0.671);
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+#custom-cpu, #custom-ram, #custom-gpu {
+    font-size: 13px;
+    font-weight: 800;
+    font-family: FreeMono, FontAwesome;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+}
+
+#custom-toggle{
+    font-size: 14px;
+    font-weight: 800;
+    font-family: FreeMono, FontAwesome;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+}
+
+#custom-cpu.low {
+    color: lightgreen;
+}
+
+#custom-ram.low {
+    color: rgb(133, 196, 233);
+}
+
+#custom-gpu.low {
+    color: rgb(190, 156, 255);
+}
+
+
+#custom-cpu.medium, #custom-ram.medium, #custom-gpu.medium {
+    color: rgb(247, 165, 71);
+}
+
+#custom-cpu.high, #custom-ram.high, #custom-gpu.high {
+    color: red;
+}
+
+#custom-cpu:hover, #custom-ram:hover, #custom-gpu:hover, #custom-toggle:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-power, #custom-reboot, #custom-lock {
+    font-size: 15px;
+    font-weight: 800;
+    font-family: FreeMono, FontAwesome;
+    padding-left: 18px;
+    padding-right: 20px;
+    border: solid 2px;
+    border-color: transparent;
+    border-radius: 4px;
+}
+
+#custom-power:hover, #custom-reboot:hover, #custom-lock:hover {
+    background-color: @bgColorHover;
+}
