@@ -1,63 +1,64 @@
 @define-color wbColor rgba(37, 40, 64, 0.4);
 @define-color borderColor rgba(190, 189, 204, 0.14);
-@define-color bgColor rgba(22, 24, 31, 0.6);
-@define-color bgToolColor rgba(22, 24, 29, 0.9);
-@define-color bgColorHover rgba(40, 62, 85, 0.8);
+@define-color bgColor rgba(22, 24, 31, 0.7);
+@define-color bgToolColor rgba(22, 24, 29, 0.6);
+@define-color bgColorHover rgba(50, 60, 80, 0.6);
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FreeSans, FontAwesome;
-    font-size: 13px;
+    font-family: Source Code Pro, FontAwesome;
+    font-weight: 800;
+    font-size: 12px;
     color: #daf2ff;
     transition: all .2s linear;
     text-shadow: rgba(0,0,0,.5) 0 0 1px;
+    box-shadow: none;
 }
 
 window#waybar {
-    background-color: @bgColor;
-    border: solid 2px;
-    border-radius: 5px;
-    border-color: @borderColor;
+    background-color: transparent;
+    border: none;
 }
 
 #pulseaudio {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
-    padding-left: 12px;
-    padding-right: 20px;
+    border: solid 1px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+    border-radius: 30px;
+    padding-left: 16px;
+    padding-right: 22px;
 }
 
 #pulseaudio:hover {
     background-color: @bgColorHover;
 }
 
-
-#window {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
-    padding-left: 5px;
-    padding-right: 10px;
-    font-weight: bold;
-}
-
-#taskbar{
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
+#taskbar {
+    border-radius: 20px;
+    background-color: @bgColor;
+    border: solid 1px;
+    border-color: @borderColor;
     padding-left: 10px;
-    padding-right: 5px;
+    padding-right: 10px;
     padding-top: 4px;
     padding-bottom: 4px;
 }
 
 #taskbar button {
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: rgba(60, 92, 126, 0.1);
+    border-radius: 12px;
+    border-color: transparent;
+    background-color: rgba(65, 75, 83, 0.15);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+#taskbar.empty {
+    background-color: transparent;
+    border-color: transparent;
 }
 
 #taskbar button.active {
@@ -65,26 +66,23 @@ window#waybar {
 }
 
 #taskbar button:hover {
-    background-color: rgba(60, 92, 126, 0.8);
+    background-color: rgba(65, 75, 83, 0.8);
 }
 
 
 #clock {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
+    font-family: JetBrainsMono Nerd Font Mono;
     font-weight: 800;
-    font-family: FreeMono, FontAwesome;
-    font-size: 15px;
+    
+    border: solid 1px;
+    border-radius: 30px;
     padding-left: 15px;
     padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
-#time {
-    padding-top: 5px;
-}
-
-#time:hover {
+#clock:hover {
     background-color: @bgColorHover;
 }
 
@@ -101,11 +99,12 @@ label:focus {
 }
 
 #tray {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
 #tray > .passive {
@@ -118,11 +117,13 @@ label:focus {
 }
 
 #idle_inhibitor {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
+    font-size: 13px;
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 21px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
 #idle_inhibitor:hover {
@@ -130,28 +131,19 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    background-color: rgba(49, 69, 85, 0.9);
-    color: #889eb1;
-}
-
-#custom-spotify {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#custom-spotify:hover {
-    background-color: @bgColorHover;
+    background-color: rgba(37, 41, 44, 0.9);
+    color: #61717e;
 }
 
 #custom-notification {
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
+    font-size: 13px;
+
+    border: solid 1px;
+    border-radius: 30px;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 17px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
 #custom-notification:hover {
@@ -160,82 +152,189 @@ label:focus {
 
 tooltip {
     background-color: @bgToolColor;
-    border-radius: 4px;
-    border-width: 0px;
+    border-radius: 6px;
+    border: solid 1px;
+    border-color: transparent;
 }
 
 tooltip label{
-    font-size: 15px;
     color: #daf2ff;
     font-weight: 800;
-    font-family: FreeMono, FontAwesome;
 }
 
-#custom-separator {
-    font-weight: bold;
-    color: rgba(116, 141, 153, 0.671);
-    padding-left: 2px;
-    padding-right: 2px;
-}
-
-#custom-cpu, #custom-ram, #custom-gpu {
-    font-size: 13px;
+#custom-cpu {
+    font-size: 11px;
     font-weight: 800;
-    font-family: FreeMono, FontAwesome;
-    padding-left: 10px;
+
+    border: solid 1px;
+    border-right: none;
+    border-radius: 30px 0px 0px 30px;
+    padding-left: 15px;
     padding-right: 10px;
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-ram {
+    font-size: 11px;
+    font-weight: 800;
+
+    border: solid 1px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-gpu {
+    font-size: 11px;
+    font-weight: 800;
+
+    border: solid 1px;
+    border-left: none;
+    border-radius: 0px 30px 30px 0px;
+    padding-left: 10px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
 #custom-toggle{
-    font-size: 14px;
     font-weight: 800;
-    font-family: FreeMono, FontAwesome;
+
+    border: solid 1px;
+    border-radius: 4px;
     padding-left: 15px;
     padding-right: 15px;
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
-#custom-cpu.low {
-    color: lightgreen;
+#custom-toggle:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-cpu.cool {
+    color: rgb(133, 196, 233);
 }
 
 #custom-ram.low {
-    color: rgb(133, 196, 233);
+    color: rgb(232, 238, 144);
 }
 
 #custom-gpu.low {
     color: rgb(190, 156, 255);
 }
 
-
-#custom-cpu.medium, #custom-ram.medium, #custom-gpu.medium {
+#custom-cpu.warm, #custom-ram.medium, #custom-gpu.medium {
     color: rgb(247, 165, 71);
 }
 
-#custom-cpu.high, #custom-ram.high, #custom-gpu.high {
+#custom-cpu.hot, #custom-ram.high, #custom-gpu.high {
     color: red;
 }
 
-#custom-cpu:hover, #custom-ram:hover, #custom-gpu:hover, #custom-toggle:hover {
-    background-color: @bgColorHover;
-}
-
-#custom-power, #custom-reboot, #custom-lock {
-    font-size: 15px;
+#custom-power {
     font-weight: 800;
-    font-family: FreeMono, FontAwesome;
-    padding-left: 18px;
-    padding-right: 20px;
-    border: solid 2px;
-    border-color: transparent;
-    border-radius: 4px;
+
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 17px;
+    padding-right: 13px;
+    background-color: @bgColor;
+    border-color: @borderColor;
 }
 
-#custom-power:hover, #custom-reboot:hover, #custom-lock:hover {
+#custom-power:hover{
     background-color: @bgColorHover;
+}
+
+menu {
+	border-radius: 4px;
+	background: rgba(22, 24, 31, 0.6);
+    padding: 5px;
+    box-shadow: none;
+    border: solid 1px;
+    border-color: @borderColor;
+}
+menuitem {
+	border-radius: 4px;
+}
+
+menuitem:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-music.Paused, #custom-music.Stopped {
+    color: rgb(124, 233, 138);
+    font-size: 13px;
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 17px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-music.Paused:hover, #custom-music.Stopped:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-music.Playing {
+    font-size: 13px;
+    letter-spacing: 2px;
+    
+    background: rgb(64, 230, 161);
+    background: radial-gradient(circle, rgba(86, 218, 108, 120) 0%, rgba(86, 218, 250, 108) 6%, rgb(86, 218, 108) 14%, rgb(72, 204, 149) 14%, rgb(37, 189, 113) 18%, rgb(67, 218, 117) 28%, rgb(18, 197, 122) 28%, rgb(32, 182, 107) 58%, rgb(70, 231, 110) 69%, rgb(28, 236, 108) 69%, rgb(37, 231, 118) 72%, rgb(58, 226, 156) 73%, rgb(52, 214, 139) 78%, rgb(82, 187, 61) 100%);
+    background-size: 400% 400%;
+    animation: gradient_f 9s cubic-bezier(.72, .39, .21, 1) infinite;
+
+    border: solid 1px;
+    text-shadow: rgba(52, 66, 57, 0.4) 0 0 2px;
+    border-radius: 30px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-color: rgb(64, 230, 161);
+    min-width: 117px;
+}
+  
+@keyframes gradient {
+0% {
+    background-position: 0% 50%;
+}
+
+50% {
+    background-position: 100% 30%;
+}
+
+100% {
+    background-position: 0% 50%;
+}
+}
+
+@keyframes gradient_f {
+0% {
+    background-position: 0% 200%;
+}
+
+50% {
+    background-position: 200% 0%;
+}
+
+100% {
+    background-position: 400% 200%;
+}
+}
+
+@keyframes gradient_f_nh {
+0% {
+    background-position: 0% 200%;
+}
+
+100% {
+    background-position: 200% 200%;
+}
 }

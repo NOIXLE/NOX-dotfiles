@@ -1,49 +1,28 @@
 #!/bin/bash
 
-# CPU usage calculation using delta method
-read cpu a b c d rest < /proc/stat
-prev_idle=$d
-prev_total=$((a + b + c + d))
+temp_raw=$(sensors 2>/dev/null | grep -m 1 'Package id 0:' | awk '{print $4}' | tr -d '+°C')
+temp=${temp_raw%.*}
 
-sleep 0.5
-
-read cpu a2 b2 c2 d2 rest < /proc/stat
-idle=$d2
-total=$((a2 + b2 + c2 + d2))
-
-diff_idle=$((idle - prev_idle))
-diff_total=$((total - prev_total))
-usage=$(( (100 * (diff_total - diff_idle)) / diff_total ))
-
-# Pad to 2 digits
-usage_padded=$(printf "%02d" $usage)
-
-# Bar rendering
-bar_len=4
-filled=$((usage * bar_len / 100))
-if (( filled > bar_len )); then filled=$bar_len; fi
-bar=""
-empty=""
-
-if (( filled > 0 )); then
-    bar=$(printf '█%.0s' $(seq 1 $filled))
+if [[ -z "$temp" ]]; then
+    echo '{"text": "CPU N/A", "class": "unknown"}'
+    exit 1
 fi
 
-empty_count=$((bar_len - filled))
-if (( empty_count > 0 )); then
-    empty=$(printf '░%.0s' $(seq 1 $empty_count))
-fi
+temp_padded=$(printf "%02d" $temp)
 
-bar_display="${bar}${empty}"
+blocks=(▁ ▂ ▃ ▄ ▅ ▆ ▇ █)
+index=$(( (temp - 30) * 8 / 70 ))
+[[ $index -lt 0 ]] && index=0
+[[ $index -ge 8 ]] && index=7
+block=${blocks[$index]}
 
-
-# Color class
-if (( usage < 50 )); then
-    class="low"
-elif (( usage < 80 )); then
-    class="medium"
+# Set class
+if (( temp < 60 )); then
+    class="cool"
+elif (( temp < 80 )); then
+    class="warm"
 else
-    class="high"
+    class="hot"
 fi
 
-echo "{\"text\": \"CPU [$bar_display] ${usage_padded}%\", \"class\": \"$class\"}"
+echo "{\"text\": \"CPU $block ${temp_padded}°C\", \"class\": \"$class\"}"

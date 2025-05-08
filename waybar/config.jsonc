@@ -1,6 +1,7 @@
 // -*- mode: jsonc -*-
 {
-    "height": 50,
+    "height": 40,
+    "spacing": 4,
     "margin-top": 10,
     "margin-left": 15,
     "margin-right": 15,
@@ -8,60 +9,31 @@
     "position": "top",
     "reload_style_on_change": true,
     "modules-left": [
-        "custom/spotify",
-        "custom/separator",
-        "group/system"
+        //"cava",
+        "group/system",
+        "wlr/taskbar#windows"
     ],
     "modules-center": [
-        "wlr/taskbar#windows"
+        "custom/music"
+        //
         //"hyprland/window"
     ],
     "modules-right": [
         "idle_inhibitor",
-        "custom/separator",
         "tray",
-        "custom/separator",
         "pulseaudio",
-        "custom/separator",
         "custom/notification",
-        "custom/separator",
-        "group/time",
-        "custom/separator",
-        "group/power"
+        "clock",
+        "custom/power"
     ],
     "group/system": {
-        "drawer": {
-            "transition-left-to-right": true,
-            "click-to-reveal": true
-        },
-        "modules": ["custom/toggle", "custom/separator", "custom/cpu", "custom/separator", "custom/ram", "custom/separator", "custom/gpu"],
+        "modules": ["custom/cpu", "custom/ram", "custom/gpu"],
         "orientation": "horizontal"
     },
-    "group/time": {
-        "modules": ["clock", "clock#date"]
-    },
-    "group/power": {
-        "modules": ["custom/power", "custom/lock", "custom/reboot"],
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-left-to-right": false,
-            "click-to-reveal": false
-        }
-    },
-    "custom/lock": {
-        "format": "󰍁",
-        "tooltip-format": "Lock",
-        "on-click": "hyprlock"
-    },
-    "custom/reboot": {
-        "format": "󰜉",
-        "tooltip-format": "Reboot",
-        "on-click": "reboot"
-    },
     "custom/power": {
-        "format": "",
-        "tooltip-format": "Power OFF",
-        "on-click": "shutdown now"
+        "format" : " ",
+        "tooltip-format": "Power Menu",
+        "on-click": "wlogout"
     },
     "custom/toggle": {
         "format": "",
@@ -83,8 +55,8 @@
     },
     "wlr/taskbar#windows": {
 		"format": "{icon}",
-		"icon-size": 28,
-        "spacing": 0,
+		"icon-size": 18,
+        "spacing": 10,
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
@@ -99,16 +71,16 @@
         "format": "{icon}",
         "format-icons": {
         "notification":
-            "<span rise='8pt'><span foreground='cyan'><sup></sup></span></span>",
+            "<span rise='5pt'><span foreground='cyan' rise='10pt'><sup></sup></span></span>",
         "none": "",
         "dnd-notification":
-            "<span rise='8pt'><span foreground='cyan'><sup></sup></span></span>",
-        "dnd-none": "",
+            "<span rise='3pt'><span foreground='cyan' rise='8pt'><sup> </sup></span></span>",
+        "dnd-none": " ",
         "inhibited-notification":
-            "<span rise='8pt'><span foreground='cyan'><sup></sup></span></span>",
+            "<span rise='5pt'><span foreground='cyan'><sup></sup></span></span>",
         "inhibited-none": "",
         "dnd-inhibited-notification":
-            "<span rise='8pt'><span foreground='cyan'><sup></sup></span></span>",
+            "<span rise='5pt'><span foreground='cyan'><sup></sup></span></span>",
         "dnd-inhibited-none": ""
         },
         "return-type": "json",
@@ -123,12 +95,10 @@
         "format": "{}",
         "return-type": "json",
         "on-click": "playerctl play-pause --player spotify",
-        "on-click-right": "playerctl next --player spotify",
-        "on-click-middle": "playerctl previous --player spotify",
         "on-scroll-up": "/home/noixle/.config/waybar/volumecontrol.sh -p spotify i 2",
         "on-scroll-down": "/home/noixle/.config/waybar/volumecontrol.sh -p spotify d 2",
         "tooltip": true,
-        "max-length": 40
+        "max-length": 30
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -138,59 +108,77 @@
         }
     },
     "tray": {
-        "icon-size": 22,
+        "icon-size": 18,
         "spacing": 10
     },
     "clock": {
-        "format": " {:%T} ",
+        "format": "{:%T}",
+        "format-alt": "{:%d %b %Y}",
         "interval": 1,
-        "tooltip": false
-    },
-    "clock#date": {
-        "tooltip-format": "<tt>{calendar}</tt>",
-        "format": " {:%a, %d %b, %Y} ",
-        "interval": 1,
-        "on-click": "gnome-calendar"
+        "tooltip-format": "{:%d %b %Y}",
+        "on-click-right": "gnome-calendar"
     },
     "custom/cpu": {
         "exec": "~/.config/waybar/scripts/cpu_bar.sh",
         "interval": 1,
-        "return-type": "json",
-        "on-click": "gnome-system-monitor"
+        "return-type": "json"
     },
     "custom/ram": {
         "exec": "~/.config/waybar/scripts/ram_bar.sh",
         "interval": 1,
-        "return-type": "json",
-        "on-click": "gnome-system-monitor"
+        "return-type": "json"
     },
     "custom/gpu": {
         "exec": "~/.config/waybar/scripts/gpu_bar.sh",
         "interval": 1,
-        "return-type": "json",
-        "on-click": "nvidia-settings"
+        "return-type": "json"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t"
     },
     "custom/separator": {
         "format": "|",
         "tooltip": false
+    },
+    "cava": {
+        "framerate": 100,
+        "autosens": 0,
+        "sensitivity": 50,
+        "bars": 10,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.6,
+        "input_delay": 2,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ]
+    },
+    "custom/music": {
+        "format": "{icon}{0}",
+        "format-icons": {
+            // "Playing": " ", // Uncomment if not using the dynamic script
+            "Paused": "  ",
+            "Stopped": "" // This stop symbol is RTL. So &#x202d; is left-to-right override.
+        },
+        "escape": true,
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/caway -b 12 -f 100",
+        "return-type": "json",
+        "on-click": "playerctl play-pause --player spotify",
+        "on-scroll-up": "/home/noixle/.config/waybar/scripts/volumecontrol.sh -p spotify i 2",
+        "on-scroll-down": "/home/noixle/.config/waybar/scripts/volumecontrol.sh -p spotify d 2",
+        "max-length": 40
     }
 }
