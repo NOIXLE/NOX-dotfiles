@@ -1,0 +1,66 @@
+window {
+margin: 0px;
+border: 2px solid rgba(110, 136, 150, 0.479);
+border-radius: 8px;
+background-color: rgba(22, 24, 29, 0.4);
+}
+
+#input {
+margin: 5px;
+padding-left: 15px;
+padding-bottom: 10px;
+padding-top: 10px;
+border: none;
+color: #d4e8ff;
+font-weight: bold;
+border-radius: 8px;
+background-color: rgba(18, 20, 24, 0.4);
+}
+
+#inner-box {
+margin: 5px;
+padding: 5px;
+border: none;
+border-radius: 8px;
+background-color: rgba(28, 31, 38, 0.4);
+}
+
+#outer-box {
+margin: 5px;
+padding: 5px;
+border: none;
+background-color: rgba(22, 24, 29, 0.4);
+border-radius: 4px;
+}
+
+#scroll {
+margin: 0px;
+border: none;
+}
+
+#text {
+margin: 5px;
+border: none;
+color: #d4e8ff;
+font-family: 'Source Code Pro';
+} 
+
+#entry.activatable #text {
+color: #282a36;
+}
+
+#entry > * {
+    padding: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #d4e8ff;
+}
+
+#entry:selected {
+border-radius: 8px;
+color: #d4e8ff;
+}
+
+#entry:selected #text {
+font-weight: bold;
+}

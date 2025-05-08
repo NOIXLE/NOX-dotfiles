@@ -1,0 +1,28 @@
+* {
+    font-family: "Source Code Pro" !important;
+}
+
+input {
+    background-color: unset !important;
+    border-bottom: solid 1px var(--spice-button-active) !important;
+    color: var(--spice-text) !important;
+    border-radius: 0px !important;
+}
+
+:root {
+    --spice-main-elevated: #1C1F26 !important;
+    --spice-highlight-elevated: #2d323d !important;
+}
+
+.encore-dark-theme .encore-bright-accent-set {
+    --background-highlight: #3bcbe4 !important;
+    --background-press: #1a9cbc !important;
+    --background-elevated-base: #3bcbe4 !important;
+    --background-elevated-highlight: #3bcbe4 !important;
+    --background-elevated-press: #1a9cbc !important;
+    --decorative-subdued: #1a9cbc !important;
+}
+
+.GOcsybnoHYyJGQGDRuwj{
+    background-color: #224B69;
+}
