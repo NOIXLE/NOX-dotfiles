@@ -1,8 +1,8 @@
 @define-color wbColor rgba(37, 40, 64, 0.4);
 @define-color borderColor rgba(190, 189, 204, 0.14);
-@define-color bgColor rgba(22, 24, 31, 0.7);
+@define-color bgColor #1e1e2e;
 @define-color bgToolColor rgba(22, 24, 29, 0.6);
-@define-color bgColorHover rgba(50, 60, 80, 0.6);
+@define-color bgColorHover #3e3e5f;
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */
@@ -32,28 +32,27 @@ window#waybar {
 #pulseaudio:hover {
     background-color: @bgColorHover;
 }
-
 #taskbar {
     border-radius: 20px;
     background-color: @bgColor;
     border: solid 1px;
     border-color: @borderColor;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
     padding-top: 4px;
     padding-bottom: 4px;
 }
 
 #taskbar button {
-    border-radius: 12px;
+    border-radius: 10px;
     border-color: transparent;
-    background-color: rgba(65, 75, 83, 0.15);
+    background-color: rgba(128, 127, 168, 0.171);
     padding-left: 4px;
     padding-right: 4px;
     padding-top: 2px;
     padding-bottom: 2px;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 #taskbar.empty {
@@ -66,12 +65,13 @@ window#waybar {
 }
 
 #taskbar button:hover {
-    background-color: rgba(65, 75, 83, 0.8);
+    background-color: #575786;
 }
 
 
 #clock {
     font-size: 14px;
+    color: #b4befe;
     
     border: solid 1px;
     border-radius: 30px;
@@ -130,8 +130,8 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    background-color: rgba(37, 41, 44, 0.9);
-    color: #61717e;
+    background-color: #4e4e77;
+    color: #b4befe;
 }
 
 #custom-notification {
@@ -159,6 +159,7 @@ tooltip {
 tooltip label{
     color: #daf2ff;
     font-weight: 800;
+    font-size: 14px;
 }
 
 #custom-cpu {
@@ -211,27 +212,28 @@ tooltip label{
 }
 
 #custom-cpu.cool {
-    color: rgb(133, 196, 233);
+    color: #89B4FA;
 }
 
 #custom-ram.low {
-    color: rgb(232, 238, 144);
+    color: #F9E2AF;
 }
 
 #custom-gpu.low {
-    color: rgb(190, 156, 255);
+    color: #bca4ff;
 }
 
 #custom-cpu.warm, #custom-ram.medium, #custom-gpu.medium {
-    color: rgb(247, 165, 71);
+    color: #FAB387;
 }
 
 #custom-cpu.hot, #custom-ram.high, #custom-gpu.high {
-    color: red;
+    color: #F38BA8;
 }
 
 #custom-power {
     font-weight: 800;
+    color: #b4befe;
 
     border: solid 1px;
     border-radius: 30px;
@@ -246,8 +248,8 @@ tooltip label{
 }
 
 menu {
-	border-radius: 4px;
-	background: rgba(22, 24, 31, 0.6);
+	border-radius: 8px;
+	background: @bgColor;
     padding: 5px;
     box-shadow: none;
     border: solid 1px;
@@ -265,7 +267,7 @@ menuitem:hover {
     color: rgb(124, 233, 138);
     border: solid 1px;
     border-radius: 30px;
-    padding-left: 15px;
+    padding-left: 14px;
     padding-right: 17px;
     background-color: @bgColor;
     border-color: @borderColor;
