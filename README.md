@@ -5,9 +5,10 @@
 Dotfiles for **Hyprland running on Arch Linux** (btw)
 
 Hi! This setup is mostly based on Catppuccin Mocha (The blue accent variant when available)
-As such, some programs will not have their configuration included in these dotfiles (look up the respective theme for the app you want)
-
+As such, some programs will not have their configuration included in these dotfiles (look up the respective theme for the app you want
 [Catppuccin ports Website](https://catppuccin.com/ports/)
+Unlike most hyprland setups, I don't really use any workspaces (I have a multi monitor setup)
+You will most likely have to setup your own keybinds for workspaces, and waybar visualization of these
 
 I want to point out the projects that helped make my rice possible:
 
