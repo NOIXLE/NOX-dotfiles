@@ -1,0 +1,352 @@
+@define-color wbColor rgba(37, 40, 64, 0.4);
+@define-color borderColor rgba(175, 190, 255, 0.4);
+@define-color bgColor #1e1e2e;
+@define-color bgToolColor rgba(22, 24, 29, 0.6);
+@define-color bgColorHover #3f3f6e;
+
+/* Honestly it would take forever to comment this whole file
+    SO uhh- good luck, I think most of this is self-explanatory
+*/
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Source Code Pro, FontAwesome;
+    font-weight: 800;
+    font-size: 12px;
+    color: #daf2ff;
+    transition: all .3s ease-in-out;
+    text-shadow: rgba(0,0,0,.5) 0 0 1px;
+    box-shadow: none;
+}
+
+window#waybar {
+    background-color: transparent;
+    border: none;
+}
+
+#pulseaudio {
+    font-size: 16px;
+    border: solid 1px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+    border-radius: 30px;
+    padding-left: 16px;
+    padding-right: 17px;
+}
+
+#pulseaudio:hover {
+    background-color: @bgColorHover;
+}
+
+#taskbar {
+    border-radius: 20px;
+    background-color: @bgColor;
+    border: solid 1px;
+    border-color: @borderColor;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#taskbar button {
+    border-color: transparent;
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    margin-left: 2px;
+    margin-right: 2px;
+    opacity: 0.4;
+}
+
+#taskbar.empty {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#taskbar button.active {
+    opacity: 0.8;
+}
+
+#taskbar button:hover {
+    background: rgba(0, 0, 0,0.1);
+    background-color: transparent;
+    opacity: 1;
+}
+
+
+#clock {
+    font-size: 14px;
+    color: #89B4FA;
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#clock:hover {
+    background-color: @bgColorHover;
+}
+
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#tray {
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    font-size: 13px;
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 21px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#idle_inhibitor:hover {
+    background-color: @bgColorHover;
+}
+
+#idle_inhibitor.activated {
+    background-color: #4e4e77;
+    color: #b4befe;
+}
+
+#custom-notification {
+    font-size: 13px;
+
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 17px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-notification:hover {
+    background-color: @bgColorHover;
+}
+
+tooltip {
+    background-color: @bgToolColor;
+    border-radius: 6px;
+    border: solid 1px;
+    border-color: transparent;
+}
+
+tooltip label{
+    color: #daf2ff;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+#custom-cpu {
+    font-family: "JetBrainsMono Nerd Font Mono";
+    border: solid 1px;
+    border-right: none;
+    border-radius: 30px 0px 0px 30px;
+    padding-left: 15px;
+    padding-right: 10px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-ram {
+    font-family: "JetBrainsMono Nerd Font Mono";
+    border: solid 1px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-gpu {
+    font-family: "JetBrainsMono Nerd Font Mono";
+    border: solid 1px;
+    border-left: none;
+    border-radius: 0px 30px 30px 0px;
+    padding-left: 10px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-toggle:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-cpu.cool {
+    color: #89B4FA;
+}
+
+#custom-ram.low {
+    color: #F9E2AF;
+}
+
+#custom-gpu.low {
+    color: #bca4ff;
+}
+
+#custom-cpu.warm, #custom-ram.medium, #custom-gpu.medium {
+    color: #FAB387;
+}
+
+#custom-cpu.hot, #custom-ram.high, #custom-gpu.high {
+    color: #F38BA8;
+}
+
+#custom-cpu:hover, #custom-ram:hover, #custom-gpu:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-power {
+    font-weight: 800;
+    color: #CBA6F7;
+
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 17px;
+    padding-right: 13px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-power:hover{
+    background-color: @bgColorHover;
+}
+
+#window {
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+menu {
+	border-radius: 8px;
+	background: @bgColor;
+    padding: 5px;
+    box-shadow: none;
+    border: solid 1px;
+    border-color: @borderColor;
+}
+menuitem {
+	border-radius: 4px;
+}
+
+menuitem:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-music.Stopped {
+    color: rgb(189, 220, 255);
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 17px;
+    padding-right: 15px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-music.Paused {
+    color: rgb(124, 233, 138);
+    border: solid 1px;
+    border-radius: 30px;
+    padding-left: 14px;
+    padding-right: 17px;
+    background-color: @bgColor;
+    border-color: @borderColor;
+}
+
+#custom-music.Paused:hover, #custom-music.Stopped:hover {
+    background-color: @bgColorHover;
+}
+
+#custom-music.Playing {
+    font-size: 13px;
+    letter-spacing: 2px;
+    
+    background: rgb(64, 230, 161);
+    background: radial-gradient(circle, rgba(86, 218, 108, 120) 0%, rgba(86, 218, 250, 108) 6%, rgb(86, 218, 108) 14%, rgb(72, 204, 149) 14%, rgb(37, 189, 113) 18%, rgb(67, 218, 117) 28%, rgb(18, 197, 122) 28%, rgb(32, 182, 107) 58%, rgb(70, 231, 110) 69%, rgb(28, 236, 108) 69%, rgb(37, 231, 118) 72%, rgb(58, 226, 156) 73%, rgb(52, 214, 139) 78%, rgb(82, 187, 61) 100%);
+    background-size: 400% 400%;
+    animation: gradient_f 9s cubic-bezier(.72, .39, .21, 1) infinite;
+
+    border: solid 1px;
+    text-shadow: rgba(52, 66, 57, 0.4) 0 0 2px;
+    border-radius: 30px;
+    padding-left: 13px;
+    padding-right: 13px;
+    border-color: rgb(64, 230, 161);
+    min-width: 117px;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 30%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradient_f {
+    0% {
+        background-position: 0% 200%;
+    }
+
+    50% {
+        background-position: 200% 0%;
+    }
+
+    100% {
+        background-position: 400% 200%;
+    }
+}
+
+@keyframes gradient_f_nh {
+    0% {
+        background-position: 0% 200%;
+    }
+
+    100% {
+        background-position: 200% 200%;
+    }
+}
+

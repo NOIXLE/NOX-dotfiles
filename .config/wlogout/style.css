@@ -1,0 +1,50 @@
+* {
+	background-image: none;
+	transition: 0;
+}
+window {
+	background-color: rgba(12, 12, 12, 0.25);
+	background-image: url('./noise.png');
+}
+button {
+    color: #d7f6ff;
+	background-color: #1e1e2e;
+	border: 1px solid rgba(190, 189, 204, 0.14);
+	border-radius: 1rem;
+	margin: 0.8rem;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-family: Source Code Pro;
+	font-size: 1.7rem;
+}
+
+button:active, button:hover {
+	background-color: #3e3e5f;
+	outline-style: none;
+}
+
+#lock {
+    background-image: image(url("/home/noixle/Pictures/Img/Logout/lock.png"), url("/home/noixle/Pictures/Img/Logout/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/home/noixle/Pictures/Img/Logout/logout.png"), url("/home/noixle/Pictures/Img/Logout/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/home/noixle/Pictures/Img/Logout/suspend.png"), url("/home/noixle/Pictures/Img/Logout/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/home/noixle/Pictures/Img/Logout/hibernate.png"), url("/home/noixle/Pictures/Img/Logout/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/home/noixle/Pictures/Img/Logout/shutdown.png"), url("/home/noixle/Pictures/Img/Logout/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/noixle/Pictures/Img/Logout/reboot.png"), url("/home/noixle/Pictures/Img/Logout/reboot.png"));
+}
