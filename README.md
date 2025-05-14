@@ -5,7 +5,7 @@
 Dotfiles for **Hyprland running on Arch Linux** (btw)
 
 Hi! This setup is mostly based on Catppuccin Mocha (The blue accent variant when available).
-As such, some programs will not have their configuration included in these dotfiles (look up the respective theme for the app you want.
+As such, some programs will not have their configuration included in these dotfiles (look up the respective theme for the app you want).
 
 [Catppuccin ports Website](https://catppuccin.com/ports/)
 
@@ -31,7 +31,7 @@ I want to point out the projects that helped make my rice possible:
 - Discord client mod
   - [Vencord](https://vencord.dev/)
 - Wallpapers
-  - [orangci Catppuccin Mocha wallpapers](https://github.com/orangci/walls-catppuccin-mocha?tab=readme-ov-file)}
+  - [orangci Catppuccin Mocha wallpapers](https://github.com/orangci/walls-catppuccin-mocha?tab=readme-ov-file)
  
 ### NOTE: I've also included my Vencord and sai2S settings files in this repo.
  
