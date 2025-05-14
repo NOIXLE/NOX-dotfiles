@@ -30,7 +30,7 @@ I want to point out the projects that helped make my rice possible:
 - Wallpapers
   - [orangci Catppuccin Mocha wallpapers](https://github.com/orangci/walls-catppuccin-mocha?tab=readme-ov-file)}
  
-### I've also included my Vencord and sai2S settings files in this repo.
+### NOTE: I've also included my Vencord and sai2S settings files in this repo.
  
 ## FULL SETUP
 (Some may be REQUIRED*, but ALL can be switched if you know what you're doing)
