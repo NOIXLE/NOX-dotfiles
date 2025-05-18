@@ -1,0 +1,155 @@
+// -*- mode: jsonc -*-
+{
+    "height": 40,
+    "spacing": 4,
+    "margin-top": 10,
+    "margin-left": 15,
+    "margin-right": 15,
+    "margin-bottom": 0,
+    "position": "top",
+    "reload_style_on_change": true,
+    "modules-left": [
+        "group/system"
+        //"wlr/taskbar#windows"
+    ],
+    "modules-center": [
+        "custom/music"
+        //"hyprland/window"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "tray",
+        "pulseaudio",
+        "custom/notification",
+        "clock",
+        "custom/power"
+    ],
+    "group/system": {
+        "modules": ["custom/cpu", "custom/ram", "custom/gpu"],
+        "orientation": "horizontal"
+    },
+    "custom/power": {
+        "format" : " ",
+        "tooltip-format": "Power Menu",
+        "on-click": "wlogout"
+    },
+    "custom/toggle": {
+        "format": "",
+        "tooltip-format": "Toggle System Monitor"
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "rotate": 0,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Zen Browser": "$1",
+            "(.*) - Code - OSS": "$1",
+            "(.*)Steam": "Steam",
+            "(.*) - Discord": "$1",
+            "PaintTool SAI Ver\\.2 \\(64bit\\) Preview\\.[0-9\\.].*": "Paint Tool SAI Ver.2",
+            "Minecraft\\* 1\\.21\\.1 .*": "Minecraft 1.21.1"
+        },
+        "max-length": 50
+    },
+    "wlr/taskbar#windows": {
+		"format": "{icon}",
+		"icon-size": 22,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"app_ids-mapping": {
+            "sai2.exe": "sai2",
+            "steam_app_3241660": "repo",
+            "steam_app_2767030": "Marvel Rivals"
+		}
+	},
+    "custom/notification": {
+        "tooltip-format": "Left: Notifications\nRight: Do not disturb",
+        "format": "{icon}",
+        "format-icons": {
+        "notification":
+            "<span rise='5pt'><span foreground='#89B4FA' rise='10pt'><sup></sup></span></span>",
+        "none": "",
+        "dnd-notification":
+            "<span rise='5pt'><span foreground='#89B4FA' rise='8pt'><sup></sup></span></span>",
+        "dnd-none": " ",
+        "inhibited-notification":
+            "<span rise='5pt'><span foreground='#89B4FA'><sup></sup></span></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification":
+            "<span rise='5pt'><span foreground='#89B4FA'><sup></sup></span></span>",
+        "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%T}",
+        "format-alt": "{:%d %b %Y}",
+        "interval": 1,
+        "tooltip-format": "{:%d %b %Y}",
+        "on-click-right": "gnome-calendar"
+    },
+    "custom/cpu": {
+        "exec": "~/.config/waybar/scripts/cpu_bar.sh",
+        "interval": 1,
+        "return-type": "json"
+    },
+    "custom/ram": {
+        "exec": "~/.config/waybar/scripts/ram_bar.sh",
+        "interval": 1,
+        "return-type": "json"
+    },
+    "custom/gpu": {
+        "exec": "~/.config/waybar/scripts/gpu_bar.sh",
+        "interval": 1,
+        "return-type": "json"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // Uncomment this if you want to use the scroll wheel to change volume
+        "format": "{icon}",
+        "format-icons": { // VERY sink specific icons for your audio devices, check your devices with 'pactl list short sinks'
+            "alsa_output.pci-0000_01_00.1.hdmi-stereo": "󰕾",
+            "alsa_output.pci-0000_01_00.1.hdmi-stereo-muted": "󰝟",
+            "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1": "󰕾",
+            "alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1-muted": "󰝟",
+            "alsa_output.usb-1532_Razer_Barracuda_X_R002000000-01.analog-stereo": "󰋋",
+            "alsa_output.usb-1532_Razer_Barracuda_X_R002000000-01.analog-stereo-muted": "󰟎"
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t", // Toggle mute
+        "on-click-middle": "~/.config/waybar/scripts/switch_audio.sh", // Custom script that changes audio outputs (modify this script to your liking)
+        "on-click-forward": "~/.config/waybar/scripts/switch_hdmi.sh" // Custom script that changes HDMI output profile (you probably don't need this)
+    },
+    "custom/music": {
+        "format": "{icon}{0}",
+        "format-icons": {
+            // "Playing": " ", // Uncomment this if you don't want the really cool cava script
+            "Paused": "  ",
+            "Stopped": " -  󰣇  noixle  - " // This will show up when no music is playing
+        },
+        "escape": true,
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/caway -b 12 -f 100", // cava script, MODIFY this script, it heavily relies on spotify, change it if you wish (works in multiple monitors!)
+        "return-type": "json",
+        "on-click": "playerctl play-pause --player spotify", // Pauses spotify (change the player to a different one if you wish)
+        "on-scroll-up": "~/.config/waybar/scripts/volumecontrol.sh -p spotify i 2", // Changes volume for spotify (can be a different player)
+        "on-scroll-down": "~/.config/waybar/scripts/volumecontrol.sh -p spotify d 2", // I took this script from the HYDE Project so don't ask me how it works-
+        "max-length": 50
+    }
+}
